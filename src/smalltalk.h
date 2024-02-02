@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   smalltalk.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shoudek <shoudek@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/02 12:40:09 by shoudek           #+#    #+#             */
-/*   Updated: 2024/02/02 13:08:47 by shoudek          ###   ########.fr       */
+/*   Created: 2024/02/02 13:07:46 by shoudek           #+#    #+#             */
+/*   Updated: 2024/02/02 13:08:31 by shoudek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "smalltalk.h"
+#ifndef SMALLTALK_H
+# define SMALLTALK_H
 
-int	main(void)
-{
-	ft_printf("s");
-	return (0);
-}
+#include "../libft/libft.h"
+
+#endif

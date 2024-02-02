@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shoudek <shoudek@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 14:22:54 by shoudek           #+#    #+#             */
-/*   Updated: 2024/01/23 12:45:37 by shoudek          ###   ########.fr       */
+/*   Created: 2024/01/16 14:26:25 by shoudek           #+#    #+#             */
+/*   Updated: 2024/01/16 14:27:34 by shoudek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_putstr(char *s, int *ptr_sum)
+void	ft_putendl_fd(char *s, int fd)
 {
-	if (s == NULL)
-	{
-		ft_putstr("(null)", ptr_sum);
-		return ;
-	}
-	while (*s)
-		ft_putchar(*s++, ptr_sum);
+	ft_putstr_fd(s, fd);
+	write(fd, "\n", 1);
 }

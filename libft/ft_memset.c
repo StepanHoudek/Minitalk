@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunsnbr.c                                     :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shoudek <shoudek@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 14:33:26 by shoudek           #+#    #+#             */
-/*   Updated: 2024/01/23 14:30:50 by shoudek          ###   ########.fr       */
+/*   Created: 2023/11/02 12:59:12 by shoudek           #+#    #+#             */
+/*   Updated: 2024/01/08 14:47:54 by shoudek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_putunsnbr(unsigned int n, int *ptr_sum)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	unsigned long int	num;
+	size_t	i;
 
-	num = n;
-	if (num > 9)
+	i = 0;
+	while (i < n)
 	{
-		ft_putnbr(num / 10, ptr_sum);
-		ft_putnbr(num % 10, ptr_sum);
+		((unsigned char *)s)[i] = c;
+		i++;
 	}
-	else
-		ft_putchar(num % 10 + '0', ptr_sum);
+	return (s);
 }
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int	main(void)
+{
+	char	*str;
+
+	str = malloc(sizeof(char) * 10);
+	str[4] = 'c';
+	printf("%p", ft_memset(str, 'a', 4));
+}
+*/

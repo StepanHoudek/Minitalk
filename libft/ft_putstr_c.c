@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handleptr.c                                     :+:      :+:    :+:   */
+/*   ft_putstr_c.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shoudek <shoudek@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 13:43:29 by shoudek           #+#    #+#             */
-/*   Updated: 2024/01/23 14:16:36 by shoudek          ###   ########.fr       */
+/*   Created: 2024/01/16 14:22:54 by shoudek           #+#    #+#             */
+/*   Updated: 2024/02/02 12:56:26 by shoudek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_handleptr(uintptr_t num, const char *format, int *ptr_sum)
+void	ft_putstr_c(char *s, int *ptr_sum)
 {
-	if (num == 0)
+	if (s == NULL)
 	{
-		ft_putstr("(nil)", ptr_sum);
+		ft_putstr_c("(null)", ptr_sum);
 		return ;
 	}
-	ft_putstr("0x", ptr_sum);
-	ft_puthex(num, format, ptr_sum);
+	while (*s)
+		ft_putchar_c(*s++, ptr_sum);
 }

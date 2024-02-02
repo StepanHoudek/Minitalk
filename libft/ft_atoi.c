@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shoudek <shoudek@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 14:33:26 by shoudek           #+#    #+#             */
-/*   Updated: 2024/01/18 15:36:20 by shoudek          ###   ########.fr       */
+/*   Created: 2024/01/03 14:25:39 by shoudek           #+#    #+#             */
+/*   Updated: 2024/01/08 14:50:56 by shoudek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_putnbr(int n, int *ptr_sum)
+int	ft_atoi(const char *s)
 {
-	long int	num;
+	int	i;
+	int	base;
+	int	sign;
 
-	num = n;
-	if (num < 0)
+	i = 0;
+	base = 0;
+	sign = 1;
+	while (s[i] == ' ' || (s[i] >= 9 && s[i] <= 13))
+		i++;
+	if (s[i] == '-')
 	{
-		ft_putchar('-', ptr_sum);
-		num *= -1;
+		sign *= -1;
+		i++;
 	}
-	if (num > 9)
+	else if (s[i] == '+')
+		i++;
+	while (s[i] >= '0' && s[i] <= '9')
 	{
-		ft_putnbr(num / 10, ptr_sum);
-		ft_putnbr(num % 10, ptr_sum);
+		base = base * 10 + (s[i] - '0');
+		i++;
 	}
-	else
-		ft_putchar(num % 10 + '0', ptr_sum);
+	return (base * sign);
 }

@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shoudek <shoudek@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 14:17:58 by shoudek           #+#    #+#             */
-/*   Updated: 2024/01/23 12:20:27 by shoudek          ###   ########.fr       */
+/*   Created: 2024/01/16 15:42:47 by shoudek           #+#    #+#             */
+/*   Updated: 2024/02/02 12:59:10 by shoudek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_putchar(char c, int *ptr_sum)
+int	ft_printf(const char *format, ...)
 {
-	write(1, &c, 1);
-	*ptr_sum += 1;
+	va_list	args;
+	int		sum;
+	int		*ptr_sum;
+
+	sum = 0;
+	ptr_sum = &sum;
+	va_start(args, format);
+	while (*format)
+		format = ft_format(format, ptr_sum, args);
+	return (sum);
 }

@@ -6,27 +6,27 @@
 /*   By: shoudek <shoudek@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 16:16:59 by shoudek           #+#    #+#             */
-/*   Updated: 2024/01/23 14:22:44 by shoudek          ###   ########.fr       */
+/*   Updated: 2024/02/02 12:57:44 by shoudek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 const char	*ft_format(const char *format, int *ptr_sum, va_list args)
 {
 	if (*format != '%')
 	{
-		ft_putchar(*format, ptr_sum);
+		ft_putchar_c(*format, ptr_sum);
 		return (format += 1);
 	}
 	if (*(format + 1) == '%' && *format == '%')
-		ft_putchar('%', ptr_sum);
+		ft_putchar_c('%', ptr_sum);
 	if (*(format + 1) == 'c')
-		ft_putchar(va_arg(args, int), ptr_sum);
+		ft_putchar_c(va_arg(args, int), ptr_sum);
 	if (*(format + 1) == 's')
-		ft_putstr(va_arg(args, char *), ptr_sum);
+		ft_putstr_c(va_arg(args, char *), ptr_sum);
 	if (*(format + 1) == 'd' || *(format + 1) == 'i')
-		ft_putnbr(va_arg(args, int), ptr_sum);
+		ft_putnbr_c(va_arg(args, int), ptr_sum);
 	if (*(format + 1) == 'x' || *(format + 1) == 'X')
 		ft_puthex(va_arg(args, int), format, ptr_sum);
 	if (*(format + 1) == 'u')

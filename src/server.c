@@ -6,7 +6,7 @@
 /*   By: shoudek <shoudek@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 12:40:09 by shoudek           #+#    #+#             */
-/*   Updated: 2024/02/05 16:06:40 by shoudek          ###   ########.fr       */
+/*   Updated: 2024/02/05 16:22:13 by shoudek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,41 @@ void	print_array(void)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	while (arr[i++] != -1)
 		printf("%d\n", arr[i]);
 	return ;
+}
+
+int	to_decimal(int num)
+{
+	int	last_digit;
+	int	base;
+	int	decimal;
+
+	base = 1;
+	decimal = 0;
+
+	while (num)
+	{
+		last_digit = num % 10;
+		num /= 10;
+		decimal += last_digit * base;
+		base *= 2;
+	}
+	return (decimal);
 }
 
 int	add_signal(int signum)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	if (!arr)
 	{
 		arr = malloc(sizeof(int) * 2048);
-		arr[1] = -1;
+		arr[0] = -1;
+		arr[2] = -1;
 	}
 	while (arr[i++] != -1)
 		;

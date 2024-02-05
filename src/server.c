@@ -6,7 +6,7 @@
 /*   By: shoudek <shoudek@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 12:40:09 by shoudek           #+#    #+#             */
-/*   Updated: 2024/02/05 16:00:47 by shoudek          ###   ########.fr       */
+/*   Updated: 2024/02/05 16:06:40 by shoudek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ int	check_end(int i)
 	int	zero_count;
 
 	zero_count = 0;
-	while (arr[i] != -1)
+	i--;
+	while (arr[i--] == 10)
+	{
 		zero_count++;
+	}
 	if (zero_count >= 4)
 		return (1);
 	else

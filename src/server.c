@@ -6,7 +6,7 @@
 /*   By: shoudek <shoudek@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 12:40:09 by shoudek           #+#    #+#             */
-/*   Updated: 2024/02/05 13:03:08 by shoudek          ###   ########.fr       */
+/*   Updated: 2024/02/05 16:00:47 by shoudek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,30 +21,53 @@
 
 #include "minitalk.h"
 
-int	*arr;
+int		*arr;
 
-void	add_signal(void)
+int	check_end(int i)
+{
+	int	zero_count;
+
+	zero_count = 0;
+	while (arr[i] != -1)
+		zero_count++;
+	if (zero_count >= 4)
+		return (1);
+	else
+		return (0);
+}
+
+void	print_array(void)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i++] != -1)
+		printf("%d\n", arr[i]);
+	return ;
+}
+
+int	add_signal(int signum)
 {
 	int	i;
 
 	i = 0;
 	if (!arr)
 	{
-		arr = malloc(sizeof(int) * 2);
+		arr = malloc(sizeof(int) * 2048);
 		arr[1] = -1;
 	}
-	printf("%d", arr[1]);
 	while (arr[i++] != -1)
-	// arr[i] = signum;
-	// arr[i + 1] = -1;
-	// printf("%d", arr[1]);
-	return ;
+		;
+	arr[i - 1] = signum;
+	arr[i] = -1;
+	return (i);
 }
 
 void	signal_handler(int signum)
 {
 	printf("Received signal %d\n", signum);
-	add_signal();
+	printf("%d\n",check_end(add_signal(signum)));
+	print_array();
 }
 
 int	main(void)
@@ -62,10 +85,6 @@ int	main(void)
 	ft_printf("%d", getpid());
 
 	while (1)
-	{
-		ft_printf("x");
-		sleep(5);
-	}
-
+		;
 	return (0);
 }

@@ -6,39 +6,69 @@
 /*   By: shoudek <shoudek@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 12:40:09 by shoudek           #+#    #+#             */
-/*   Updated: 2024/02/05 13:00:00 by shoudek          ###   ########.fr       */
+/*   Updated: 2024/02/05 16:01:03 by shoudek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+int	ft_to_binary(int num)
+{
+	int	res;
+	int	i;
+	int	rem;
+
+	res = 0;
+	i = 1;
+	while (num > 0)
+	{
+		rem = num % 2;
+		res = res + (i * rem);
+		num = num / 2;
+		i = i * 10;
+	}
+	return (res);
+}
 
 void	signal_handler(int signum)
 {
 	printf("Received signal %d\n", signum);
 }
 
-int	main(int argc, char *argv[])
+int	main(/*int argc, char *argv[]*/)
 {
-	sigset_t set;
+	int num;
+	char *str = "\0";
+	int to_send;
+	int pid;
 
-	sigemptyset(&set);
+	pid = 158598;
 
-	sigaddset(&set, SIGUSR1);
-	if (sigismember(&set, SIGUSR1))
+	// if (argc != 3)
+	// 	return (0);
+
+	num = ft_to_binary(str[0]);
+	while (num > 0)
 	{
-		printf("// SIGUSR1 is in the set");
+		to_send = num % 10;
+		num /= 10;
+		if (to_send)
+		{
+			printf("%d\n", to_send);
+			kill(pid, SIGUSR2);
+		}
+		else
+		{
+			printf("%d\n", to_send);
+			kill(pid, SIGUSR1);
+		}
+		usleep(50);
 	}
-	sigaddset(&set, SIGUSR2);
-	if (sigismember(&set, SIGUSR2))
+	to_send = 4;
+	while (to_send--)
 	{
-		printf("SIGUSR2 is in the set");
+		kill(pid, SIGUSR1);
+		usleep(50);
 	}
-	kill(120500, SIGUSR1);
-
-	if (!argv)
-		return (0);
-	if (argc != 3)
-		return (0);
-
 	return (0);
 }

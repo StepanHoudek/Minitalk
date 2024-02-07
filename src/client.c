@@ -6,7 +6,7 @@
 /*   By: shoudek <shoudek@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 12:40:09 by shoudek           #+#    #+#             */
-/*   Updated: 2024/02/07 14:32:42 by shoudek          ###   ########.fr       */
+/*   Updated: 2024/02/07 14:39:54 by shoudek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,30 +37,26 @@ void	signal_handler(int signum)
 
 int	main(/*int argc, char *argv[]*/)
 {
-	char *str = "Z";
+	char *str = "a";
 	int pid;
 	int num;
 	int bits;
 
-	pid = 103177;
+	pid = 183712;
 	num = str[0];
 	bits = 8;
 
 	while (bits > 0)
 	{
-		//pid = num & 1;
-		if (num & 8)
+		if (num & 128)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
 		bits--;
 		ft_printf("%d",num & 1);
-		num >>= 1;
+		num <<= 1;
 		usleep(10);
 	}
-
-0 0 1 1 0 0 0 0
-1 0 0 0 0 0 0 0
 
 	// if (argc != 3)
 	// 	return (0);

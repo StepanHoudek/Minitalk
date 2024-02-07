@@ -6,7 +6,7 @@
 /*   By: shoudek <shoudek@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 12:40:09 by shoudek           #+#    #+#             */
-/*   Updated: 2024/02/07 14:28:45 by shoudek          ###   ########.fr       */
+/*   Updated: 2024/02/07 14:38:32 by shoudek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	signal_handler(int signum)
 {
 	static int				bit_itr = -1;
 	static unsigned char	c = 0;
-	int						temp;
 
 	printf("Received signal |%d|\n", signum);
 	if (bit_itr < 0)
@@ -38,27 +37,12 @@ void	signal_handler(int signum)
 	bit_itr--;
 	if (bit_itr == 0)
 	{
-
-		temp = c;
-		temp = c && 1;
-		c >>= c;
 		ft_printf("Character: |%c|\n", c);
 		bit_itr = -1;
 		c = 0;
 	}
 	return ;
 	// print_array();
-
-0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 1
-0 0 0 0 0 0 1 1
-0 0 0 1 1 0 0 0
-0 0 1 1 0 0 0 1
-0 1 1 0 0 0 1 0
-
-
-
-0 1 0 0 0 1 1 0
 }
 
 int	main(void)

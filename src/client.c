@@ -6,7 +6,7 @@
 /*   By: shoudek <shoudek@student.42prague.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 12:40:09 by shoudek           #+#    #+#             */
-/*   Updated: 2024/02/07 12:49:41 by shoudek          ###   ########.fr       */
+/*   Updated: 2024/02/07 14:32:42 by shoudek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,25 @@ int	main(/*int argc, char *argv[]*/)
 	int num;
 	int bits;
 
-	pid = 184313;
+	pid = 103177;
 	num = str[0];
 	bits = 8;
 
 	while (bits > 0)
 	{
 		//pid = num & 1;
-		if (num & 1)
+		if (num & 8)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
 		bits--;
+		ft_printf("%d",num & 1);
 		num >>= 1;
+		usleep(10);
 	}
 
-
+0 0 1 1 0 0 0 0
+1 0 0 0 0 0 0 0
 
 	// if (argc != 3)
 	// 	return (0);
